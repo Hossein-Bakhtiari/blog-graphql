@@ -22,8 +22,6 @@ const GET_BLOGS_INFO = gql`
   }
 `;
 
-
- 
 const GET_AUTHORS_INFO = gql`
   query {
     authors {
@@ -37,28 +35,53 @@ const GET_AUTHORS_INFO = gql`
   }
 `;
 
-const GET_AUTHOR_INFO = gql `
-query GETaUTHORiNO($slug: String!){
-  author(where: {slug: $slug }) {
-    id
-    name
-    field
-    avatar {
-      url
+const GET_AUTHOR_INFO = gql`
+  query GETaUTHORiNO($slug: String!) {
+    author(where: { slug: $slug }) {
+      id
+      name
+      field
+      avatar {
+        url
+      }
+      description {
+        html
+      }
+      posts {
+        coverPhoto {
+          url
+        }
+        id
+        slug
+        title
+      }
     }
-    description {
-      html
-    }
-    posts {
+  }
+`;
+
+const GET_POST_INFO = gql`
+  query getPostInfo($slug: String!) {
+    post(where: { slug: $slug }) {
+      author {
+        ... on Author {
+          id
+          name
+          avatar {
+            url
+          }
+          name
+          field
+        }
+      }
+      title
       coverPhoto {
         url
       }
-      id
-      slug
-      title
+      content {
+        html
+      }
     }
   }
-}
-`
+`;
 
-export { GET_BLOGS_INFO , GET_AUTHORS_INFO , GET_AUTHOR_INFO};
+export { GET_BLOGS_INFO, GET_AUTHORS_INFO, GET_AUTHOR_INFO, GET_POST_INFO };
