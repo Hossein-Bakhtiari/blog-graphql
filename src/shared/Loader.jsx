@@ -16,7 +16,7 @@ function Loader() {
         visible={true}
         height="100"
         width="100"
-        color="#1976d2"
+        color="primary"
         strokeWidth="5"
         animationDuration="0.75"
         ariaLabel="rotating-lines-loading"
