@@ -6,6 +6,7 @@ import { GET_POST_INFO } from "../graphql/queries";
 import { Avatar, Box, Container, Grid, Typography } from "@mui/material";
 import { ArrowBackRounded } from "@mui/icons-material";
 import sanitizeHtml from "sanitize-html";
+import CommentForm from "../comment/CommentForm";
 
 function BlogPage() {
   const { slug } = useParams();
@@ -60,6 +61,9 @@ function BlogPage() {
               __html: sanitizeHtml(data.post.content.html),
             }}
           ></div>
+        </Grid>
+        <Grid item xs={12} mt={5}>
+          <CommentForm slug={slug}/>
         </Grid>
       </Grid>
     </Container>
