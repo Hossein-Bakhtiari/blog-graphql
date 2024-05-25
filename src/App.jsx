@@ -2,6 +2,9 @@ import { gql, useQuery } from "@apollo/client";
 import Header from "./components/layout/Header";
 import HomePage from "./components/home/HomePage";
 import Layout from "./components/layout/Index";
+import { Route, Routes } from "react-router-dom";
+import BlogPage from "./blog/BlogPage";
+import AuthorPage from "./authors/AuthorPage";
 
 const QUERY = gql`
   query {
@@ -16,7 +19,11 @@ function App() {
   console.log(data);
   return (
     <Layout>
-      <HomePage />
+      <Routes>
+        <Route path="/" element={<HomePage />}/>
+        <Route path="/blogs/:slug" element={<BlogPage />}/>
+        <Route path="/authors/:slug" element={<AuthorPage />}/>
+      </Routes>
     </Layout>
   );
 }
