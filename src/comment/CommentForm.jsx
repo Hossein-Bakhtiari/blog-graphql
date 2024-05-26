@@ -15,7 +15,7 @@ function CommentForm({ slug }) {
   const [sendComment, { loading, data }] = useMutation(SEND_COMMENT, {
     variables: { name, email, text, slug },
   });
-  console.log(data);
+
   const sendHandler = () => {
     if (name && email && text) {
       sendComment();
