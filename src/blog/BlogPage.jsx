@@ -16,6 +16,7 @@ function BlogPage() {
   const { loading, data, error } = useQuery(GET_POST_INFO, {
     variables: { slug },
   });
+  
   if (loading) return <Loader />;
 
   if (error) return <h4>Error...</h4>;
@@ -29,6 +30,7 @@ function BlogPage() {
             variant="h4"
             color="primary"
             fontWeight="700"
+            
           >
             {data.post.title}
           </Typography>
@@ -58,6 +60,7 @@ function BlogPage() {
         </Grid>
         <Grid xs={12} mt={5}>
           <div
+            dir={data.post.dir}
             dangerouslySetInnerHTML={{
               __html: sanitizeHtml(data.post.content.html),
             }}

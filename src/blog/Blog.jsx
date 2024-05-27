@@ -12,7 +12,7 @@ function Blog() {
 
   if (error) return <h4>Error...</h4>;
 
-  // console.log(data);
+  console.log(data);
   return (
     <Grid container spacing={2}>
       {data.posts.map((post) => (

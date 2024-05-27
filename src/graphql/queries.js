@@ -80,6 +80,7 @@ const GET_POST_INFO = gql`
       content {
         html
       }
+      dir
     }
   }
 `;
